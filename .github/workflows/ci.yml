@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -c requirements-docker.txt -e ".[api,langgraph,test]"
+      - run: python scripts/validate_world.py
+      - run: python -m pytest -q
+
+  frontend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+
+  docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose build
+      - name: Запуск и проверка /health
+        run: |
+          docker compose up -d --wait --wait-timeout 180
+          curl --fail --silent http://localhost:8080/health
+          curl --fail --silent --output /dev/null http://localhost:8080/
+      - if: always()
+        run: docker compose logs
+      - if: always()
+        run: docker compose down
