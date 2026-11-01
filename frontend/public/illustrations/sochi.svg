@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#5ac6fc"/><stop offset="1" stop-color="#b2f7e7"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#1676e8"/><stop offset="1" stop-color="#003d98"/></linearGradient><linearGradient id="sand" x2="0" y2="1"><stop stop-color="#ffeab9"/><stop offset="1" stop-color="#facd86"/></linearGradient></defs>
+<rect width="960" height="540" fill="url(#sky)"/><circle cx="755" cy="104" r="65" fill="#fff9ba"/>
+<path d="M0 245L120 177l76 31 114-95 93 105 95-51 89 68 99-32 68 35 206-12v114H0" fill="#83b9c0"/>
+<path d="M0 301Q177 276 299 304t265-5q151-31 396-4v245H0" fill="url(#sea)"/>
+<path d="M0 418Q280 355 487 399t473 39v102H0" fill="url(#sand)"/>
+<path d="M0 500Q220 459 392 475t568 17v48H0" fill="#f5bf77"/>
+<path d="M141 363q-17-88 27-178" fill="none" stroke="#593d26" stroke-width="18" stroke-linecap="round"/><path d="M170 184q-101-13-123-91q113 1 135 75M179 176q16-103 99-112q-2 97-98 122M176 189q88-61 144-9q-73 62-144 17M163 191q-90 2-112 66q85 18 118-51" fill="#258763" stroke="#3f9d60" stroke-width="5"/>
+<path d="M0 325Q150 305 292 317t300 0 368 5" stroke="#d8fcf7" opacity=".75" stroke-width="5" fill="none"/>
+</svg>
